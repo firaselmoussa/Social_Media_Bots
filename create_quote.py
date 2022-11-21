@@ -34,3 +34,11 @@ def generateQuotedImage():
     W2 = W1.Font(family="comicbd.ttf", size=FONT_SIZE)
     quote_width = W2.measure(quote[0])
     num_lines = math.ceil(quote_width/WIDTH)
+
+    # draw quote on image
+    draw = ImageDraw.Draw(img)
+    quote_font = ImageFont.truetype("ebrima.ttf", FONT_SIZE)
+    author_font = ImageFont.truetype("comicbd.ttf", FONT_SIZE-4)
+    quote_segments = quote[0].split(" ")
+
+    lines = textwrap.wrap(quote[0], math.floor(len(quote[0])/num_lines))
