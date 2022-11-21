@@ -5,8 +5,8 @@ import requests
 # https://picsum.photos/200/300
 
 
-def getImage():
-    url = "https://picsum.photos/200/300?blur=2"
+def getImage(w, h):
+    url = f"https://picsum.photos/{w}/{h}?blur=2"
 
     response = requests.get(url)
 
