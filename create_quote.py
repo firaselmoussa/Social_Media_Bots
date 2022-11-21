@@ -29,3 +29,8 @@ def generateQuotedImage():
     enhancer = ImageEnhance.Brightness(img)
     # decrease brightness to the half
     img = enhancer.enhance(0.5)
+
+    # calculating words per line
+    W2 = W1.Font(family="comicbd.ttf", size=FONT_SIZE)
+    quote_width = W2.measure(quote[0])
+    num_lines = math.ceil(quote_width/WIDTH)
