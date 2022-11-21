@@ -16,3 +16,8 @@ def generateQuotedImage():
     FONT_SIZE = 16
     FW = Tk()
     FW.withdraw()
+
+    # generating new images & quote
+    getImage(WIDTH, HEIGHT)
+    quote = getQuote()
+    quote_length = len(quote[0])
