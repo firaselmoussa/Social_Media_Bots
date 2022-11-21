@@ -41,4 +41,22 @@ def generateQuotedImage():
     author_font = ImageFont.truetype("comicbd.ttf", FONT_SIZE-4)
     quote_segments = quote[0].split(" ")
 
+    # spliting quote into equal lines
     lines = textwrap.wrap(quote[0], math.floor(len(quote[0])/num_lines))
+
+    # rendering lines, line by line below each other
+    x = 0
+    for line in lines:
+        x += 20
+        draw.text((30, HEIGHT/1.6 + x), line,
+                  font=quote_font, fill=(255, 255, 255))
+
+    # rendering author name
+    draw.text((35, HEIGHT/1.6 + x + 30), f"~ {quote[1]}",
+              font=author_font, fill=(255, 255, 255))
+
+    # save quote
+    img.save("generated_imgs/quote_img.jpg")
+
+
+generateQuotedImage()
