@@ -21,3 +21,11 @@ def generateQuotedImage():
     getImage(WIDTH, HEIGHT)
     quote = getQuote()
     quote_length = len(quote[0])
+
+    # open new immage
+    img = Image.open("fetched_imgs/random_img.jpg")
+
+    # image brightness enhancer
+    enhancer = ImageEnhance.Brightness(img)
+    # decrease brightness to the half
+    img = enhancer.enhance(0.5)
