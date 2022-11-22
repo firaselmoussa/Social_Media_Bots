@@ -11,9 +11,9 @@ import textwrap
 
 def generateQuotedImage():
     # dimensions
-    WIDTH = 300
-    HEIGHT = 500
-    FONT_SIZE = 16
+    WIDTH = 1080
+    HEIGHT = 1080
+    FONT_SIZE = 36
     FW = Tk()
     FW.withdraw()
 
@@ -38,21 +38,21 @@ def generateQuotedImage():
     # draw quote on image
     draw = ImageDraw.Draw(img)
     quote_font = ImageFont.truetype("ebrima.ttf", FONT_SIZE)
-    author_font = ImageFont.truetype("comicbd.ttf", FONT_SIZE-4)
+    author_font = ImageFont.truetype("comicbd.ttf", FONT_SIZE-6)
     quote_segments = quote[0].split(" ")
 
     # spliting quote into equal lines
     lines = textwrap.wrap(quote[0], math.floor(len(quote[0])/num_lines))
 
     # rendering lines, line by line below each other
-    x = 0
+    x = 40
     for line in lines:
-        x += 20
-        draw.text((30, HEIGHT/1.6 + x), line,
+        draw.text((60, HEIGHT/1.6 + x), line,
                   font=quote_font, fill=(255, 255, 255))
+        x += 40
 
     # rendering author name
-    draw.text((35, HEIGHT/1.6 + x + 30), f"~ {quote[1]}",
+    draw.text((60, HEIGHT/1.6 + x + 30), f"~ {quote[1]}",
               font=author_font, fill=(255, 255, 255))
 
     # save quote
