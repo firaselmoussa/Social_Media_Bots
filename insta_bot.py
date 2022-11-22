@@ -35,3 +35,18 @@ def newInstaPost():
 
     # uploading  post
     bot.upload_photo(img, caption=cptn)
+
+    bot.upload_story_photo(img, capyion="New Post!")
+    # liking post
+    bot.like_user(MY_USERNAME, amount=2)
+    # comment
+    my_id = bot.get_user_id_from_username(MY_USERNAME)
+    my_media = bot.get_last_user_medias(my_id)
+    bot.comment(my_media, """Share, Comment & Like
+
+    #wisebot89""")
+
+    # liking tags
+    tags = ['quotes', 'wise', 'bot']
+    for i in tags:
+        bot.like_hashtag(i, amount=10)
