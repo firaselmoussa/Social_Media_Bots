@@ -57,3 +57,5 @@ def generateQuotedImage():
 
     # save quote
     img.save("generated_imgs/quote_img.jpg")
+
+    return quote
