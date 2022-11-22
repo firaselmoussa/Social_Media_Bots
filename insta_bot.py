@@ -2,7 +2,8 @@ import glob
 from instabot import Bot
 from create_quote import generateQuotedImage
 import os
-from time import time, sleep
+import schedule
+import time
 
 # delete config
 cookie_del = glob.glob("config/*cookie.json")
@@ -12,7 +13,6 @@ os.remove(cookie_del[0])
 # login credentials
 MY_USERNAME = os.environ["WISEBOT_INSTA_USERNAME"]
 MY_PASSWORD = os.environ["WISEBOT_INSTA_PASSWORD"]
-
 
 # created bot & logged it in
 bot = Bot()
@@ -26,11 +26,10 @@ def newInstaPost():
     quote = generateQuotedImage()
     img = "generated_imgs/quote_img.jpg"
     cptn = f'''"{quote[0]}"
-                                
+
         ~{quote[1]}
-                                
-                                
-                                
+
+
         #wisebot89'''
 
     # uploading  post
@@ -50,3 +49,11 @@ def newInstaPost():
     tags = ['quotes', 'wise', 'bot']
     for i in tags:
         bot.like_hashtag(i, amount=10)
+
+
+# post every hour
+schedule.every(1).days.do(newInstaPost)
+
+while 1:
+    schedule.run_pending()
+    time.sleep(1)
